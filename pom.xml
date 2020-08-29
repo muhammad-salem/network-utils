@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.network</groupId>
+    <groupId>com.github.salemebo</groupId>
     <artifactId>network-utils-pom</artifactId>
     <version>0.2.8</version>
     <packaging>pom</packaging>
@@ -13,13 +13,11 @@
         <module>speed</module>
         <module>connectivity</module>
     </modules>
-
-    <description>Command Line Download Manager</description>
-    <scm>
-        <url>https://github.com/salemebo/network-utils.git</url>
-        <tag>http, network, speed, connectivity</tag>
-    </scm>
-
+    <name>Java Network Speed Utils</name>
+    <description>
+        Java Network Speed Utils, a library to calculate 'socket and connection' "read and write speed", connectivity test and more
+    </description>
+    <url>https://github.com/salemebo/network-utils</url>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -37,9 +35,23 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -58,20 +70,83 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
+                    <!-- <doclint>none</doclint> -->
+                    <tags>
+                        <tag>
+                            <name>date</name>
+                            <placement>a</placement>
+                            <head>Date</head>
+                        </tag>
+                        <tag>
+                            <name>editBy</name>
+                            <placement>a</placement>
+                            <head>Edit By</head>
+                        </tag>
+                    </tags>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
     </build>
+
+       <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/salemebo/network-utils/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/salemebo/network-utils.git</connection>
+        <developerConnection>scm:git:git@github.com:salemebo/network-utils.git</developerConnection>
+        <url>http://github.com/salemebo/network-utils</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>salemebo</name>
+            <timezone>UTC+2</timezone>
+        </developer>
+    </developers>
+
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
