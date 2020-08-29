@@ -2,9 +2,7 @@ package org.network.connectivity;
 /**
  * It had to be HTTP server - not HTTPS,
  * so ISP can redirect request if user's quota had been finished,
- * --> so we can stop any future request
- *
- * @author salem
+ * then we can stop any future request
  */
 public enum CheckServer {
 

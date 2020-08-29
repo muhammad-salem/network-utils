@@ -30,11 +30,11 @@ public class UrlConnectivity implements ConnectivityCheck {
 
     /**
      * Perform an HTTP GET request to check network connectivity
-     * if we got any response (code > 200)  --> connected <br>
-     * if ISP redirect the request			--> redirected <br>
-     * if got any network / IO exception 	--> disconnected <br>
+     * if we got any response (code = 200) connected <br>
+     * if ISP redirect the request redirected <br>
+     * if got any network / IO exception  disconnected <br>
      *
-     * @return
+     * @return NetworkStatus Object
      */
     @Override
     public NetworkStatus networkStatus() {

@@ -14,7 +14,7 @@ public interface DatagramSocketMonitor {
      * This method will be called after
      * {@link java.net.DatagramSocket#send(DatagramPacket)} is called.
      *
-     * @param datagramPacket Sent packet.
+     * @param len Sent packet length.
      */
     void onSend(final IntWarp len);
 
@@ -22,7 +22,7 @@ public interface DatagramSocketMonitor {
      * This method will be called after
      * {@link java.net.DatagramSocket#receive(DatagramPacket)} is called.
      *
-     * @param datagramPacket Received packet.
+     * @param len Received packet length.
      */
     void onReceive(final IntWarp len);
 }
